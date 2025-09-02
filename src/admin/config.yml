@@ -22,7 +22,6 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Session Recap", name: "body", widget: "markdown" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }
 
   # Collection for Characters (NPCs or PCs)
   - name: "characters"
@@ -34,7 +33,6 @@ collections:
       - { label: "Name", name: "title", widget: "string" }
       - { label: "Photo", name: "photo", widget: "image", required: false }
       - { label: "Bio / Description", name: "body", widget: "markdown" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/character.njk" }
 
   # Collection for Players
   - name: "players"
@@ -46,7 +44,6 @@ collections:
       - { label: "Player Name", name: "title", widget: "string" }
       - { label: "Photo", name: "photo", widget: "image", required: false }
       - { label: "Bio", name: "body", widget: "markdown" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/player.njk" }
 
   # Collection for Items
   - name: "items"
@@ -58,7 +55,6 @@ collections:
       - { label: "Item Name", name: "title", widget: "string" }
       - { label: "Image", name: "photo", widget: "image", required: false }
       - { label: "Description", name: "body", widget: "markdown" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/item.njk" }
 
   # Collection for One-Shots, Memes, and Misc Content
   - name: "misc"
@@ -72,4 +68,4 @@ collections:
       - { label: "Image or GIF", name: "photo", widget: "image", required: false }
       - { label: "External Link", name: "url_link", widget: "string", required: false }
       - { label: "Content", name: "body", widget: "markdown", required: false }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/misc-post.njk" }
+
