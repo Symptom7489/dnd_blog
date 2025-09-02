@@ -1,0 +1,90 @@
+// --- Color Palette Variables ---
+// Makes it easy to manage and reuse your colors.
+
+// Darks
+$color-darkest: #0B090A;
+$color-dark-gray: #161A1D;
+
+// Reds (Accents)
+$color-red-deep: #660708;
+$color-red-dark: #A4161A;
+$color-red-primary: #BA181B;
+$color-red-bright: #E5383B;
+
+// Lights (Text & UI)
+$color-gray-medium: #B1A7A6;
+$color-gray-light: #D3D3D3;
+$color-off-white: #F5F3F4;
+
+
+// --- Global Styles ---
+// Basic styles for the whole site.
+
+body {
+  // A subtle gradient from the dark gray to the near-black.
+  background-color: $color-red-deep;
+  background-image: linear-gradient(180deg, $color-red-dark, $color-red-deep);
+  min-height: 100vh; // Ensures gradient covers the full page height
+
+  // Set default text color to be readable on the dark background.
+  color: $color-off-white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.6;
+  margin: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  // Using a brighter red for headings to make them stand out.
+  color: $color-dark-gray;
+  font-family: 'Times New Roman', serif; // A classic fantasy font choice
+}
+
+a {
+  color: $color-red-bright;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+// --- Layout ---
+// A simple container to center content.
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+
+// --- Components ---
+// Reusable elements like buttons.
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+
+  // Default button state
+  background-color: $color-red-dark;
+  color: $color-off-white;
+  border: 2px solid $color-red-dark;
+
+  // Hover state (reverses the colors as you wanted)
+  &:hover {
+    background-color: $color-off-white;
+    color: $color-red-dark;
+    text-decoration: none; // remove underline on hover for buttons
+    transform: translateY(-2px); // a little lift on hover
+  }
+}

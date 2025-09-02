@@ -1,0 +1,41 @@
+---
+layout: "layout/base.njk"
+title: "Welcome to the Lost Mine of Phandelver"
+---
+
+<main class="homepage">
+  <div class="container mx-auto px-4 py-8">
+
+    {# Hero Section with the Main Title #}
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-bold font-serif mb-4">{{ title }}</h1>
+      <p class="text-lg text-gray-light max-w-3xl mx-auto">A Dungeons & Dragons Fifth Edition Adventure</p>
+    </div>
+
+    {# Introduction Content - uses prose classes styled in main.scss #}
+    <div class="prose prose-lg max-w-4xl mx-auto text-gray-light">
+      <p>Welcome, adventurers, to the Sword Coast—a rugged, untamed land of sprawling wilderness, ancient ruins, and untold opportunity. For weeks, you have been traveling north from the bustling metropolis of Waterdeep, bound for the frontier town of Phandalin. The journey has been long, but the promise of payment keeps your spirits high.</p>
+
+      <p>Your mutual acquaintance, a cheerful and ambitious dwarf named <strong>Gundren Rockseeker</strong>, hired you for a simple task: escort a wagon of mining provisions to Barthen's Provisions in Phandalin. He spoke excitedly of a "discovery of a lifetime," though he remained frustratingly secretive about the details. Promising to meet you in the town, he and a warrior escort, Sildar Hallwinter, rode ahead a few days ago to take care of business.</p> <br>
+
+      <h1 class="font-serif font-bold text-3xl">The Job Ahead</h1>
+      <p>The final leg of your journey takes you along the Triboar Trail, a path known to be frequented by bandits and marauders. The wagon, laden with supplies and pulled by two sturdy oxen, trundles along the dirt path. The woods press in on either side, casting long shadows in the afternoon sun. So far, the trip has been uneventful, but the air is thick with the silence of the wilderness.</p>
+
+      <p>Your simple escort mission is about to take an unexpected turn. Dangers lurk in the shadows of these woods, and the sleepy town of Phandalin is not as peaceful as it seems. Gundren Rockseeker's big discovery has attracted unwanted attention, and soon, you will find yourselves entangled in a web of goblin marauders, local thugs, and a mysterious villain known only as the <strong>Black Spider</strong>.</p>
+
+      <p>The fate of Phandalin, the location of the legendary Wave Echo Cave, and the life of your dwarven friend all rest in your hands. Steel your nerves, ready your spells, and sharpen your blades. Your adventure is about to begin.</p>
+    </div>
+
+    {# Quick Links Section #}
+    <nav class="quick-links text-center mt-16">
+      <h2 class="text-3xl font-serif mb-6">Campaign Resources</h2>
+      <ul class="list-none p-0 flex flex-wrap gap-4 justify-center">
+        <li><a href="/characters/" class="btn">Characters</a></li>
+        <li><a href="/items/" class="btn">Legendary Items</a></li>
+        <li><a href="/blog/" class="btn">Campaign Log</a></li>
+        <li><a href="/misc/" class="btn">House Rules & Misc</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</main>

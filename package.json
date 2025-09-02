@@ -1,0 +1,18 @@
+{
+  "name": "your-dnd-project",
+  "version": "1.0.0",
+  "scripts": {
+    "watch:sass": "sass --watch _sass:css",
+    "watch:tailwind": "npx tailwindcss -i ./_css/tailwind.css -o ./css/tailwind.css --watch",
+    "serve": "eleventy --serve",
+    "start": "npm-run-all --parallel serve watch:*"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "autoprefixer": "^10.4.19",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.38",
+    "sass": "^1.77.4",
+    "tailwindcss": "^3.4.3"
+  }
+}
