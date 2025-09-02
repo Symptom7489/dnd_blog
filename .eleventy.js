@@ -1,14 +1,15 @@
-// .eleventy.js
-module.exports = function (eleventyConfig) {
-  // Pass through directories like CSS and images
+module.exports = function(eleventyConfig) {
+  // Passthrough copy for your CSS folder
   eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("img");
 
-  // Add more configurations as needed
+  // Passthrough copy for an images folder, if you have one
+  // eleventyConfig.addPassthroughCopy("img");
+
   return {
     dir: {
-      input: "src", // Source directory for your content
-      output: "dist", // Output directory for the generated site
+      input: "src",
+      includes: "_includes",
+      output: "_site", // This is the crucial line!
     },
   };
 };
