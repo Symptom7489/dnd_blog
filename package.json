@@ -1,11 +1,16 @@
 {
-  "name": "your-dnd-project",
+  "name": "lost-mines-blog",
   "version": "1.0.0",
   "scripts": {
     "watch:sass": "sass --watch _sass:css",
     "watch:tailwind": "npx tailwindcss -i ./_css/tailwind.css -o ./css/tailwind.css --watch",
     "serve": "eleventy --serve",
-    "start": "npm-run-all --parallel serve watch:*"
+    "start": "npm-run-all --parallel serve watch:*",
+
+    "build:sass": "sass _sass:css",
+    "build:tailwind": "npx tailwindcss -i ./_css/tailwind.css -o ./css/tailwind.css --minify",
+    "build:eleventy": "eleventy",
+    "build": "npm-run-all --serial build:*"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
