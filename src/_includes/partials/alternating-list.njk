@@ -1,0 +1,31 @@
+
+<div class="space-y-16">
+
+  {% for item in collection %}
+
+    <div class="flex flex-col md:flex-row {% if loop.index % 2 == 0 %}md:flex-row-reverse{% endif %} items-center gap-8">
+
+
+      <div class="w-full md:w-2/5">
+        {% if item.data.photo %}
+          <img src="{{ item.data.photo | url }}" alt="Image for {{ item.data.title }}" class="w-full h-auto rounded-lg shadow-lg object-cover">
+        {% else %}
+
+          <div class="w-full aspect-square bg-darkest flex items-center justify-center rounded-lg">
+            <span class="text-gray-medium text-lg">No Image</span>
+          </div>
+        {% endif %}
+      </div>
+
+
+      <div class="w-full md:w-3/5">
+        <h2 class="text-3xl font-bold text-off-white font-serif mb-4">{{ item.data.title }}</h2>
+
+        <div class="prose prose-lg text-gray-light">
+          {{ item.templateContent | safe }}
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+</div>

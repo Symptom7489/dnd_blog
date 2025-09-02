@@ -1,0 +1,75 @@
+# This is the backend configuration. It tells the CMS how to connect to your Git repository.
+backend:
+  name: git-gateway # Using Netlify's Git Gateway for authentication
+  repo: Symptom7489/dnd_blog # Your GitHub repository
+  branch: main # The branch to commit changes to
+
+# This tells the CMS where to store uploaded media files.
+# media_folder: "src/img" -> Where the CMS saves the files in your repo.
+# public_folder: "/img" -> The path your built website will use to display them.
+media_folder: "src/img/{{collection}}"
+public_folder: "/img/{{collection}}"
+
+# This is where we define all the content types you can edit.
+collections:
+  # Collection for Campaign/Session Recaps (Blog)
+  - name: "campaign"
+    label: "Campaign Log"
+    folder: "src/blog" # Eleventy will build files from this folder.
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Creates a clean, date-based URL slug (e.g., 2025-09-02-session-recap)
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Session Recap", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }
+
+  # Collection for Characters (NPCs or PCs)
+  - name: "characters"
+    label: "Characters"
+    folder: "src/characters"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Bio / Description", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/character.njk" }
+
+  # Collection for Players
+  - name: "players"
+    label: "Players"
+    folder: "src/players" # Note: You may need to create this folder in your 'src' directory.
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Player Name", name: "title", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Bio", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/player.njk" }
+
+  # Collection for Items
+  - name: "items"
+    label: "Items"
+    folder: "src/items"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Item Name", name: "title", widget: "string" }
+      - { label: "Image", name: "photo", widget: "image", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/item.njk" }
+
+  # Collection for One-Shots, Memes, and Misc Content
+  - name: "misc"
+    label: "One-Shots & Memes"
+    folder: "src/misc"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: false }
+      - { label: "Image or GIF", name: "photo", widget: "image", required: false }
+      - { label: "External Link", name: "url_link", widget: "string", required: false }
+      - { label: "Content", name: "body", widget: "markdown", required: false }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/misc-post.njk" }

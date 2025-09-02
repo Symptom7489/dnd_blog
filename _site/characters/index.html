@@ -1,13 +1,24 @@
-<header class="bg-dark-gray shadow-lg sticky top-0 z-50 relative">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Characters of the Campaign</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link rel="stylesheet" href="/css/tailwind.css">	
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="flex flex-col min-h-screen">
+ <header class="bg-dark-gray shadow-lg sticky top-0 z-50 relative">
   <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-    {# Site Title / Logo #}
+    
     <div>
       <a href="/" class="text-off-white text-2xl font-bold hover:text-red-primary transition-colors">
         D&D Campaign
       </a>
     </div>
 
-    {# Desktop Navigation Links (Visible on medium screens and up) #}
+    
     <div class="hidden md:flex space-x-6">
       <a href="/blog/" class="text-gray-light hover:text-red-bright transition-colors">Campaign Log</a>
       <a href="/characters/" class="text-gray-light hover:text-red-bright transition-colors">NPCs</a>
@@ -42,3 +53,54 @@
     menu.classList.toggle('hidden');
   });
 </script>
+
+
+  <main class="flex-grow">
+    
+      
+<div class="container mx-auto px-4 py-12">
+  <h1 class="text-5xl font-bold text-red-primary font-serif text-center mb-16">Characters of the Campaign</h1>
+
+  
+  
+
+    
+    <div class="space-y-16">
+      
+
+        <div class="flex flex-col md:flex-row  items-center gap-8">
+
+          
+          <div class="w-full md:w-2/5">
+            
+              <img src="/img/characters/gundren.jpg" alt="Image for Gundren Rockseeker" class="w-full h-auto rounded-lg shadow-lg object-cover">
+            
+          </div>
+
+          
+          <div class="w-full md:w-3/5">
+            <h2 class="text-3xl font-bold text-off-white font-serif mb-4">Gundren Rockseeker</h2>
+            <div class="prose prose-lg text-gray-light">
+              <p>A stout dwarf with a prospector's spirit and a nose for treasure. Gundren is a friend and the employer who kicked off this entire adventure by hiring the party to escort his goods to Phandalin. He and his brothers have reportedly found the long-lost Wave Echo Cave.</p>
+
+            </div>
+          </div>
+
+        </div>
+      
+    </div>
+
+  
+</div>
+
+
+    
+  </main>
+
+<footer class="mt-auto py-8 bg-darkest">
+  <div class="container mx-auto px-6 text-center text-gray-medium">
+  DND Stuff
+  </div>
+</footer>
+
+</html>

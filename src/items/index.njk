@@ -1,0 +1,48 @@
+---
+layout: "layout/base.njk"
+title: "Treasures & Artifacts"
+---
+
+<div class="container mx-auto px-4 py-12">
+  <h1 class="text-5xl font-bold text-red-primary font-serif text-center mb-16">{{ title }}</h1>
+
+  {# First, we check if the collection actually has items #}
+  {% if collections.items and collections.items.length %}
+
+    {#
+      This is the logic from the partial, now living directly on this page.
+      We loop through the specific `collections.items` array.
+    #}
+    <div class="space-y-16">
+      {% for item in collections.items %}
+
+        <div class="flex flex-col md:flex-row {% if loop.index % 2 == 0 %}md:flex-row-reverse{% endif %} items-center gap-8">
+
+          {# Image Column #}
+          <div class="w-full md:w-2/5">
+            {% if item.data.photo %}
+              <img src="{{ item.data.photo | url }}" alt="Image for {{ item.data.title }}" class="w-full h-auto rounded-lg shadow-lg object-cover">
+            {% else %}
+              <div class="w-full aspect-square bg-darkest flex items-center justify-center rounded-lg">
+                <span class="text-gray-medium text-lg">No Image</span>
+              </div>
+            {% endif %}
+          </div>
+
+          {# Info/Content Column #}
+          <div class="w-full md:w-3/5">
+            <h2 class="text-3xl font-bold text-off-white font-serif mb-4">{{ item.data.title }}</h2>
+            <div class="prose prose-lg text-gray-light">
+              {{ item.templateContent | safe }}
+            </div>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    {# If the collection is empty, we show this message #}
+    <p class="text-center text-gray-medium text-lg">No items have been added yet. Check back soon!</p>
+  {% endif %}
+</div>
