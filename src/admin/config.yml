@@ -15,9 +15,9 @@ collections:
   # Collection for Campaign/Session Recaps (Blog)
   - name: "campaign"
     label: "Campaign Log"
-    folder: "src/blog" # Eleventy will build files from this folder.
+    folder: "src/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Creates a clean, date-based URL slug (e.g., 2025-09-02-session-recap)
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
@@ -25,8 +25,12 @@ collections:
         name: "body"
         widget: "markdown"
         editor:
-          # Disables image insertion in the Rich Text field
-          buttons: [bold, italic, code, link, heading, quote, bullist, numlist]
+          # 1. 'buttons': Removed 'code' button (for inline code)
+          buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+          
+          # 2. 'editor_components': Removed 'image' and 'code-block'
+          editor_components: []
+          
   # Collection for Characters (NPCs or PCs)
   - name: "characters"
     label: "Characters"
