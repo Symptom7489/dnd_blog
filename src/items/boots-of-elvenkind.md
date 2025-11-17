@@ -1,6 +1,10 @@
 ---
 title: Boots of Elvenkind
 photo: /img/{{collection}}/a-pair-of-boots-of-elvenkind.avif
+layout: "layout/item.njk"
+item_type: "Wondrous Item"
+rarity: "Uncommon"
+attunement: false
 ---
 
 **Description**

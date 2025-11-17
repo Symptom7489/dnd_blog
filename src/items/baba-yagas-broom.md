@@ -1,6 +1,10 @@
 ---
 title: Baba Yaga's Broom
 photo: /img/{{collection}}/baba-yaga-dancing-broom-on-a-white-background.avif
+layout: "layout/item.njk"
+item_type: "Artifact"
+rarity: "Legendary"
+attunement: true
 ---
 
 **Description**

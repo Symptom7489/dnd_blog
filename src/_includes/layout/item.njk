@@ -1,0 +1,69 @@
+---
+layout: "layout/base.njk"
+---
+
+<article class="container mx-auto px-4 py-16 max-w-6xl">
+  
+  <div class="container mx-auto px-4 py-12">
+  <h1 class="text-4xl lg:text-5xl text-center font-dnd-head mb-8">
+    {{ title }}
+  </h1>
+
+  <div class="flex flex-col md:flex-row gap-10">
+
+    {# 1. ITEM IMAGE AND METADATA COLUMN #}
+    <aside class="w-full md:w-1/3 flex-shrink-0">
+      <div class="p-6 bg-dark-gray border border-red-dark rounded-lg shadow-xl">
+        
+        {# Item Photo #}
+        {% if photo %}
+          <div class="mb-6">
+            <img 
+              src="{{ photo | url }}" 
+              alt="Image of {{ title }}" 
+              class="w-full h-auto object-cover rounded-md border border-gray-medium"
+            >
+          </div>
+        {% endif %}
+
+        {# Metadata Table - UPDATED FOR LARGER TEXT AND ITEM TYPE #}
+        <h3 class="text-2xl font-dnd-head text-off-white mb-3 border-b border-gray-medium pb-2">Properties</h3>
+        <ul class="space-y-3 text-lg text-gray-light">
+          <li>
+            <strong class="text-red-primary">Type:</strong> {{ item_type | default('N/A') }}
+          </li>
+          <li>
+            <strong class="text-red-primary">Rarity:</strong> {{ rarity | default('Mundane') }}
+          </li>
+          <li>
+            <strong class="text-red-primary">Attunement:</strong> {# --- UPDATED LOGIC HERE --- #}
+            {% if attunement %}
+              Required
+            {% else %}
+              None
+            {% endif %}
+          </li>
+        </ul>
+        
+      </div>
+    </aside>
+
+    {# 2. ITEM DESCRIPTION COLUMN #}
+    <section class="w-full md:w-2/3">
+      <h2 class="text-3xl font-dnd-head text-off-white mb-4">Description & Lore</h2>
+      
+      {# Render the Markdown Content #}
+      <div class="prose prose-lg dark:prose-invert text-gray-light">
+        {{ content | safe }}
+      </div>
+    </section>
+
+  </div>
+
+  <div class="mt-16 text-center">
+    <a href="/items/" class="btn bg-red-dark text-off-white px-6 py-3 rounded-full hover:bg-red-primary transition-colors duration-300">
+      &larr; Back to Treasures & Artifacts
+    </a>
+  </div>
+
+</article>

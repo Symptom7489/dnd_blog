@@ -4,45 +4,53 @@ title: "Treasures & Artifacts"
 ---
 
 <div class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl lg:text-5xl text-center font-dnd-head mb-8">{{ title }}</h1>
+  <h1 class="text-4xl lg:text-5xl text-center font-dnd-head mb-8">{{ title }}</h1>
+  
+  <p class="text-center text-lg text-gray-medium mb-12">
+    The complete catalog of magical gear, unique artifacts, and powerful tools discovered throughout the campaign. Click on any item to view its full details and properties.
+  </p>
 
-  {# First, we check if the collection actually has items #}
   {% if collections.items and collections.items.length %}
 
-    {#
-      This is the logic from the partial, now living directly on this page.
-      We loop through the specific `collections.items` array.
-    #}
-    <div class="space-y-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      
       {% for item in collections.items %}
-
-        <div class="flex flex-col md:flex-row {% if loop.index % 2 == 0 %}md:flex-row-reverse{% endif %} items-center gap-8">
-
-          {# Image Column #}
-          <div class="w-full md:w-2/5">
-            {% if item.data.photo %}
-              <img src="{{ item.data.photo | url }}" alt="Image for {{ item.data.title }}" class="w-full h-auto rounded-lg shadow-lg object-cover">
-            {% else %}
-              <div class="w-full aspect-square bg-darkest flex items-center justify-center rounded-lg">
-                <span class="text-gray-medium text-lg">No Image</span>
-              </div>
-            {% endif %}
-          </div>
-
-          {# Info/Content Column #}
-          <div class="w-full md:w-3/5">
-            <h2 class="text-3xl font-bold text-off-white font-serif mb-4">{{ item.data.title }}</h2>
-            <div class="prose prose-lg text-gray-light">
-              {{ item.templateContent | safe }}
+        
+        <a href="{{ item.url }}" class="group block no-underline">
+          <div class="bg-dark-gray border border-red-dark rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-red-bright transform hover:scale-[1.02]">
+            
+            {# Image Area - FORCES UNIFORM HEIGHT #}
+            <div class="relative overflow-hidden **h-60**">
+              {% if item.data.photo %}
+                <img src="{{ item.data.photo | url }}" 
+                     alt="Image of {{ item.data.title }}" 
+                     class="w-full h-full **object-cover** transition-transform duration-500 group-hover:scale-105"
+                     {# The combination of w-full, h-full, and object-cover ensures the image fills the container without distortion #}
+                >
+              {% else %}
+                <div class="w-full h-full bg-darkest flex items-center justify-center">
+                  <span class="text-gray-medium text-lg">No Image Available</span>
+                </div>
+              {% endif %}
             </div>
-          </div>
 
-        </div>
+            {# Title Area - REMAINS UNIFORM #}
+            <div class="p-4 text-center h-20 flex flex-col justify-center">
+              <h2 class="text-xl font-dnd-head text-off-white group-hover:text-red-primary transition-colors duration-300 truncate">
+                {{ item.data.title }}
+              </h2>
+              <p class="text-sm text-gray-medium mt-1">
+                Rarity: {{ item.data.rarity | default('Unknown') }}
+              </p>
+            </div>
+
+          </div>
+        </a>
+
       {% endfor %}
     </div>
 
   {% else %}
-    {# If the collection is empty, we show this message #}
     <p class="text-center text-gray-medium text-lg">No items have been added yet. Check back soon!</p>
   {% endif %}
 </div>
