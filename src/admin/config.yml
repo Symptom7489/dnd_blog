@@ -35,7 +35,7 @@ collections:
     fields:
       - { label: "Name", name: "title", widget: "string" }
       - { label: "Photo", name: "photo", widget: "image", required: false }
-      - { label: "Bio / Description", name: "body", widget: "markdown" }
+      - { label: "Bio / Description", name: "body", widget: "markdown",}
 
   # Collection for Players
   - name: "players"
@@ -48,16 +48,41 @@ collections:
       - { label: "Photo", name: "photo", widget: "image", required: false }
       - { label: "Bio", name: "body", widget: "markdown" }
 
-  # Collection for Items
-  - name: "items"
-    label: "Items"
-    folder: "src/items"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Item Name", name: "title", widget: "string" }
-      - { label: "Image", name: "photo", widget: "image", required: false }
-      - { label: "Description", name: "body", widget: "markdown" }
+# Collection for Items
+- name: "items"
+  label: "Items"
+  folder: "src/items"
+  create: true
+  slug: "{{slug}}"
+  fields:
+    - { label: "Item Name", name: "title", widget: "string" }
+    
+    # 1. Dedicated Image Field (New/Updated)
+    # The 'photo' field you manually used in your .md files.
+    - { label: "Item Photo", name: "photo", widget: "image", required: false, allow_multiple: false }
+    
+    # 2. Item Type (Select List)
+    # Uses a 'select' widget for controlled data entry.
+    - label: "Item Type"
+      name: "item_type"
+      widget: "select"
+      options: ["Weapon", "Armor", "Wondrous Item", "Potion", "Scroll", "Tool", "Artifact"]
+      default: "Wondrous Item"
+
+    # 3. Rarity (Select List)
+    # Uses a 'select' widget to enforce standardized rarity levels.
+    - label: "Rarity"
+      name: "rarity"
+      widget: "select"
+      options: ["Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact"]
+      default: "Uncommon"
+
+    # 4. Attunement (Boolean/Yes/No)
+    # Uses a 'boolean' widget for a clear Attunement requirement.
+    - { label: "Requires Attunement?", name: "attunement", widget: "boolean", default: false, required: false }
+
+    # 5. Full Description
+    - { label: "Description", name: "body", widget: "markdown", editor_components: [] }
 
   # Collection for One-Shots, Memes, and Misc Content
   - name: "misc"
@@ -70,5 +95,5 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime", required: false }
       - { label: "Image or GIF", name: "photo", widget: "image", required: false }
       - { label: "External Link", name: "url_link", widget: "string", required: false }
-      - { label: "Content", name: "body", widget: "markdown", required: false }
+      - { label: "Content", name: "body", widget: "markdown", editor_components: [], required: false }
 
