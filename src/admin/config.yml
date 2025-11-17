@@ -24,13 +24,8 @@ collections:
       - label: "Session Recap"
         name: "body"
         widget: "markdown"
-        editor:
-          # 1. 'buttons': Removed 'code' button (for inline code)
-          buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
-          
-          # 2. 'editor_components': Removed 'image' and 'code-block'
-          editor_components: []
-          
+        editor_components: []
+
   # Collection for Characters (NPCs or PCs)
   - name: "characters"
     label: "Characters"
