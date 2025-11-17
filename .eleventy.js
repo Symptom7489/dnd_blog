@@ -1,28 +1,49 @@
+// .eleventy.js or eleventy.config.js
+
+// --- Date Utility Functions ---
+function getReadableDate(dateObj) {
+  // Formats the date to a readable string: e.g., November 17, 2025
+  return new Date(dateObj).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+function htmlDateString(dateObj) {
+  // Formats the date for the HTML datetime attribute: e.g., 2025-11-17
+  return new Date(dateObj).toISOString().split('T')[0];
+}
+
 module.exports = function(eleventyConfig) {
+  
   // --- Passthrough Copies ---
-  // These are files that Eleventy will copy directly to your output folder (_site).
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy({ "src/img": "img" });
 
-  // --- Collections ---
-  // We are now manually telling Eleventy how to build our collections.
-  // This is more explicit and can solve issues where the automatic
-  // collection generation fails.
+  // --- Nunjucks Filters (Date Formatting) ---
+  eleventyConfig.addFilter("readableDate", getReadableDate);
+  eleventyConfig.addFilter("htmlDateString", htmlDateString);
 
-  // 1. Create a 'characters' collection
+  // --- Custom Collections ---
+  
+  // 1. Campaign Log Collection (Looks in src/blog)
+  eleventyConfig.addCollection("campaign", function(collection) {
+    return collection.getFilteredByGlob("src/blog/**/*.md");
+  });
+
+  // 2. Characters Collection (Looks in src/characters)
   eleventyConfig.addCollection("characters", function(collectionApi) {
-    // getFilteredByGlob tells Eleventy to find all Markdown files
-    // in the 'src/characters' folder.
     return collectionApi.getFilteredByGlob("./src/characters/**/*.md");
   });
 
-  // 2. Create a 'players' collection
+  // 3. Players Collection (Looks in src/players)
   eleventyConfig.addCollection("players", function(collectionApi) {
     return collectionApi.getFilteredByGlob("./src/players/**/*.md");
   });
 
-  // 3. Create an 'items' collection
+  // 4. Items Collection (Looks in src/items)
   eleventyConfig.addCollection("items", function(collectionApi) {
     return collectionApi.getFilteredByGlob("./src/items/**/*.md");
   });
@@ -35,8 +56,8 @@ module.exports = function(eleventyConfig) {
       includes: "_includes",
       output: "_site",
     },
+    dataTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
   };
 };
-

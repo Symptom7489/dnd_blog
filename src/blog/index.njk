@@ -5,11 +5,41 @@ title: "Campaign Log"
 
 <main class="container">
   <div class="container mx-auto px-4 py-12">
+    
     <h1 class="text-4xl lg:text-5xl text-center font-dnd-head mb-8">{{ title }}</h1>
-  <p>Follow our party's journey from their humble beginnings to their most heroic triumphs. This log chronicles every session, detailing the challenges overcome, the alliances forged, and the mysteries uncovered.</p>
+    
+    <p class="text-center text-lg text-gray-medium mb-12">
+      Follow our party's journey from their humble beginnings to their most heroic triumphs. This log chronicles every session, detailing the challenges overcome, the alliances forged, and the mysteries uncovered.
+    </p>
 
-  {# This is where a list of all blog/log posts will be generated #}
-  <div class="post-list">
-    <p class="placeholder">New campaign log entries will be displayed here!</p>
+    {# The post list structure #}
+    <div class="post-list space-y-8 mt-12">
+      
+      {% for post in collections.campaign | reverse %}
+        <article class="p-6 bg-dark-gray shadow-lg rounded-lg border border-red-dark hover:border-red-primary transition-all duration-300">
+          
+          <h2 class="text-3xl font-dnd-head mb-2">
+            {# Link uses post.url which is defined by your permalink (e.g., /campaign/first-session/) #}
+            <a href="{{ post.url }}" class="text-red-bright hover:text-red-primary">
+              {{ post.data.title }}
+            </a>
+          </h2>
+          
+          <p class="text-gray-medium text-sm mb-4">
+            Session Date: {{ post.date | readableDate }}
+          </p>
+
+          <div class="text-gray-light">
+            {# Truncate the content to provide a short summary #}
+            {{ post.templateContent | safe | truncate(200, true, '...') }}
+          </div>
+          
+          <a href="{{ post.url }}" class="text-red-bright font-bold mt-3 inline-block hover:underline">
+            Read Full Log Entry &rarr;
+          </a>
+        </article>
+      {% endfor %}
+
+    </div>
   </div>
 </main>

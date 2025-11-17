@@ -1,0 +1,28 @@
+---
+layout: "layout/base.njk"
+---
+
+<article class="section">
+  <div class="container mx-auto px-4 py-16 max-w-4xl">
+    
+    {# Title #}
+    <h1 class="text-5xl lg:text-6xl text-center font-dnd-head mb-4 text-red-bright">
+      {{ title }}
+    </h1>
+
+    {# Date #}
+    <p class="text-center text-gray-medium text-sm mb-12">
+      Session Date: <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+    </p>
+
+    {# Content Area with Tailwind Typography for formatting #}
+    <div class="prose dark:prose-invert text-gray-light mx-auto">
+      {{ content | safe }}
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/campaign/" class="btn">Back to Campaign Log</a>
+    </div>
+
+  </div>
+</article>
