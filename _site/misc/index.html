@@ -2,29 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport view-transition" content="same-origin width=device-width, initial-scale=1.0">
   <title>One Shots and Memes</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/tailwind.css">	
   <link rel="stylesheet" href="/css/main.css">
 </head>
-<body class="flex flex-col min-h-screen">
- <header class="bg-dark-gray shadow-lg sticky top-0 z-50 relative">
-  <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+<body class="flex flex-col min-h-screen font-dnd-body text-xl">
+ <header class="bg-dark-gray shadow-lg sticky top-0 z-50 relative rounded-xl">
+  <nav class="container mx-auto px-6 py-3 flex justify-between items-stretch">
     
     <div>
-      <a href="/" class="text-off-white text-2xl font-bold hover:text-red-primary transition-colors">
+      <a href="/" class="text-off-white text-2xl font-bold transition-colors">
         D&D Campaign
       </a>
     </div>
 
     
     <div class="hidden md:flex space-x-6">
-      <a href="/blog/" class="text-gray-light hover:text-red-bright transition-colors">Campaign Log</a>
-      <a href="/characters/" class="text-gray-light hover:text-red-bright transition-colors">NPCs</a>
-      <a href="/items/" class="text-gray-light hover:text-red-bright transition-colors">Items</a>
-      <a href="/players/" class="text-gray-light hover:text-red-bright transition-colors">Players</a>
-      <a href="/misc/" class="text-gray-light hover:text-red-bright transition-colors">One Shots and Memes</a>
+      <a href="/blog/" class="text-gray-light hover:text-red-bright transition-colors h-full py-0 px-3 flex items-center">Campaign Log</a>
+      <a href="/characters/" class="text-gray-light hover:text-red-bright transition-colors h-full py-0 px-3 flex items-center">NPCs</a>
+      <a href="/items/" class="text-gray-light hover:text-red-bright transition-colors h-full py-0 px-3 flex items-center">Items</a>
+      <a href="/players/" class="text-gray-light hover:text-red-bright transition-colors h-full py-0 px-3 flex items-center">Players</a>
+      <a href="/misc/" class="text-gray-light hover:text-red-bright transition-colors h-full py-0 px-3 flex items-center">One Shots and Memes</a>
     </div>
 
     <button id="hamburger-button" class="hamburger-button md:hidden" aria-label="Open Menu">
@@ -59,7 +60,7 @@
     
       
 <div class="container mx-auto px-4 py-12">
-  <h1 class="text-5xl font-bold text-red-primary font-serif text-center mb-16">One Shots and Memes</h1>
+    <h1 class="text-4xl lg:text-5xl text-center font-dnd-head mb-8">One Shots and Memes</h1>
 
   
   
@@ -71,8 +72,8 @@
     
   </main>
 
-<footer class="mt-auto py-8 bg-darkest">
-  <div class="container mx-auto px-6 text-center text-gray-medium">
+<footer class="mt-auto py-8 bg-darkest relative rounded-xl">
+  <div class="container mx-auto px-6 text-center text-gray-medium ">
   DND Stuff
   </div>
 </footer>

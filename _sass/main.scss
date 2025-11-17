@@ -1,70 +1,101 @@
-// --- Color Palette Variables ---
-// Makes it easy to manage and reuse your colors.
+// ===================================
+// 1. VARIABLE DEFINITIONS
+// ===================================
 
-// Darks
+// --- Color Palette ---
 $color-darkest: #0B090A;
 $color-dark-gray: #161A1D;
-
-// Reds (Accents)
 $color-red-deep: #660708;
 $color-red-dark: #A4161A;
 $color-red-primary: #BA181B;
 $color-red-bright: #E5383B;
-
-// Lights (Text & UI)
 $color-gray-medium: #B1A7A6;
 $color-gray-light: #D3D3D3;
 $color-off-white: #F5F3F4;
+$color-dnd-red: #A30000;
+
+// --- Typography ---
+$font-dnd-heading: 'Cinzel', Garamond, serif;
+$font-dnd-body: 'IM Fell English SC', Georgia, serif;
 
 
-// --- Global Styles ---
-// Basic styles for the whole site.
+// ===================================
+// 2. GLOBAL BASE STYLES
+// ===================================
 
 body {
-  // A subtle gradient from the dark gray to the near-black.
-  background-color: $color-red-deep;
-  background-image: linear-gradient(180deg, $color-red-dark, $color-red-deep);
-  min-height: 100vh; // Ensures gradient covers the full page height
+  // --- Background Styles (Aged Texture) ---
+  background-color: $color-dnd-red;
+  background-image: 
+    linear-gradient(90deg, rgba(black, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(black, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(white, 0.02), transparent 100%);
+  background-size: 10px 10px, 10px 10px, 100% 100%;
+  background-attachment: fixed;
 
-  // Set default text color to be readable on the dark background.
-  color: $color-off-white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  // --- Default Text & Layout ---
+  color: $color-off-white; // Set default text color
   line-height: 1.6;
   margin: 0;
-  padding: 2rem;
-  box-sizing: border-box;
+  // NOTE: Tailwind classes like margin, padding, and box-sizing are better applied
+  // via Tailwind utilities, but kept the base structure for organization.
 }
 
-h1, h2, h3 {
-  // Using a brighter red for headings to make them stand out.
-  color: $color-dark-gray;
-  font-family: 'Times New Roman', serif; // A classic fantasy font choice
+
+// ===================================
+// 3. TYPOGRAPHY AND HEADINGS
+// ===================================
+
+// Apply the default DnD Body font (if not overridden by Tailwind utilities)
+body {
+  font-family: $font-dnd-body; 
 }
 
+// Apply the dramatic DnD Heading font
+h1, h2, h3, .title, .subtitle {
+  font-family: $font-dnd-heading;
+  font-weight: 700;
+  color: $color-dark-gray; // Setting a dark color for headings
+}
+
+// Override or enhance specific elements
+.content {
+  font-size: 1.1rem; // Ensuring long-form content is readable
+}
+
+
+// ===================================
+// 4. HYPERLINKS AND NAV BAR
+// ===================================
+
+// Global Link Styles
 a {
-  color: $color-red-bright;
   text-decoration: none;
-  transition: color 0.3s ease;
+  color: $color-gray-light;
+  transition: color 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease; 
 
   &:hover {
-    text-decoration: underline;
+    color: $color-red-deep; 
+    background-color: $color-gray-medium;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+}
+
+// Exclusion for Site Title Link (to remove hover effects)
+nav .container a:first-child { 
+  &:hover {
+    background-color: transparent !important;
+    border-radius: 0 !important;
   }
 }
 
 
-// --- Layout ---
-// A simple container to center content.
+// ===================================
+// 5. COMPONENTS
+// ===================================
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-
-// --- Components ---
-// Reusable elements like buttons.
-
+// --- Buttons (.btn) ---
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -75,29 +106,27 @@ a {
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 
-  // Default button state
   background-color: $color-red-dark;
   color: $color-off-white;
   border: 2px solid $color-red-dark;
 
-  // Hover state (reverses the colors as you wanted)
   &:hover {
     background-color: $color-off-white;
     color: $color-red-dark;
-    text-decoration: none; // remove underline on hover for buttons
-    transform: translateY(-2px); // a little lift on hover
+    text-decoration: none;
+    transform: translateY(-2px);
   }
 }
 
 // --- Hamburger Menu Button ---
 .hamburger-button {
-  // These styles apply on ALL screen sizes
   width: 30px;
   height: 22px;
   cursor: pointer;
   background: transparent;
   border: none;
   padding: 0;
+
   @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
@@ -112,7 +141,6 @@ a {
     transition: all 0.3s ease-in-out;
   }
 
-  // Animate to an "X" when the .is-active class is added by JavaScript
   &.is-active {
     .hamburger-line:nth-child(1) {
       transform: translateY(9px) rotate(45deg);
@@ -124,4 +152,15 @@ a {
       transform: translateY(-10px) rotate(-45deg);
     }
   }
+}
+
+
+// ===================================
+// 6. UTILITIES (Non-Tailwind)
+// ===================================
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
 }

@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'dnd-head': ['Cinzel', 'Garamond', 'serif'],
+        'dnd-body': ['IM Fell English SC', 'Georgia', 'serif'],
+      },
       colors: {
         'darkest': '#0B090A',
         'dark-gray': '#161A1D',
